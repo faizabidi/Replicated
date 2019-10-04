@@ -3,6 +3,16 @@
 This is a single bash script that extracts useful information from a support
 bundle.
 
+## Data to be extracted
+
+- Kernel type                                                                       
+- Kernel version                                                                 
+- Number of cores (physical and logical)                                                                 
+- Load average in seconds over the past 15 minutes                                
+- Disk usage in bytes on the root device                                          
+- Docker version                                                                  
+- Docker storage driver 
+
 ## Usage
 path_to_script path_to_support_bundle
 
