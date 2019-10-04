@@ -1,0 +1,8 @@
+Kernel: Linux
+Kernel version: 4.15.0-1030-gcp
+Number of physical cores: 2
+Number of logical CPUs: 4
+Average load in the last 15 minutes: 2560.24
+Disk usage in bytes on root: 2099601408
+Docker version: 18.09.6
+Docker storage driver: overlay2
