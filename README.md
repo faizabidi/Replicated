@@ -5,8 +5,8 @@ bundle.
 
 ## Data to be extracted
 
-- Kernel type                                                                       
-- Kernel version                                                                 
+- OS distro                                                              
+- OS distro version                                                                 
 - Number of cores (physical and logical)                                                                 
 - Load average in seconds over the past 15 minutes                                
 - Disk usage in bytes on the root device                                          
