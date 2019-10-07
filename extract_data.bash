@@ -23,8 +23,8 @@ PROC_FILE_PATH="/tmp/replicated/default/proc"
 DF_FILE_PATH="/tmp/replicated/default/commands/df"
 DOCKER_FILE_PATH="/tmp/replicated/default/docker"
 
-KERNEL_NAME=$(cat $PROC_FILE_PATH/version | awk '{print $1}')
-KERNEL_VERSION=$(cat $PROC_FILE_PATH/version | awk '{print $3}')
+OS_DISTRO=$(cat $DOCKER_FILE_PATH/docker_info.json | grep OperatingSystem | awk '{print $2}' | tr -d \" | cut -c 1-)
+OS_DISTRO_VERSION=$(cat $DOCKER_FILE_PATH/docker_info.json | grep OperatingSystem | awk '{print $3}')
 NUM_CORES=$(cat $PROC_FILE_PATH/cpuinfo | grep "cpu cores" | awk {'print $4}' | head -1)
 LOGICAL_CPUS=$(grep -c "processor" $PROC_FILE_PATH/cpuinfo)
 AVG_LOAD_15MIN=$(awk '{print $NF}' $PROC_FILE_PATH/uptime)
@@ -35,8 +35,8 @@ DISK_USAGE_ROOT=$(($DISK_USAGE_ROOT * 1024))
 DOCKER_VERSION=$(cat $DOCKER_FILE_PATH/docker_version.json | grep "\"Version\"" | awk '{print $2}' | tr -d \")
 DOCKER_STORAGE_DRIVER=$(cat $DOCKER_FILE_PATH/docker_info.json | grep "\"Driver\"" | awk '{print $2}' | tr -d \" | rev | cut -c 2- | rev)
 
-echo "Kernel:" $KERNEL_NAME >> info.txt
-echo "Kernel version:" $KERNEL_VERSION >> info.txt
+echo "OS distro:" $OS_DISTRO >> info.txt
+echo "OS distro version:" $OS_DISTRO_VERSION >> info.txt
 echo "Number of physical cores:" $NUM_CORES >> info.txt
 echo "Number of logical CPUs:" $LOGICAL_CPUS >> info.txt
 echo "Average load in the last 15 minutes:" $AVG_LOAD_15MIN >> info.txt
